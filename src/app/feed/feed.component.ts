@@ -19,9 +19,36 @@ export class FeedComponent implements OnInit {
 
   ];
 
-  constructor() { }
+  tweetText = '';
+
+   constructor() { }
 
   ngOnInit() {
+  }
+
+  isUserInCollection(collection: string[], userId: string): boolean {
+
+      return collection.indexOf(userId) !== -1;
+
+  }
+
+  OnFavorite(tweet) {
+    if (!this.isUserInCollection(tweet.favorites, 'Glen')) {
+      tweet.favorites.push('Glen');
+    }
+  }
+
+  OnRetweet(tweet) {
+    if (!this.isUserInCollection(tweet.retweets, 'Glen')) {
+      tweet.retweets.push('Glen');
+    }
+  }
+
+  OnNewTweet() {
+    this.tweets.unshift(
+      { body: this.tweetText, author: 'Glen', avatar: 'glen.jpg', date: new Date(), retweets: [], favorites: [] }
+    );
+    this.tweetText = '';
   }
 
 }
