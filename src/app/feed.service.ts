@@ -31,7 +31,7 @@ export class FeedService {
 
   private isUserInCollection(collection: string[], userId: string): boolean {
 
-    return collection.indexOf(userId) != -1;
+    return collection.indexOf(userId) !== -1;
 
   }
 
